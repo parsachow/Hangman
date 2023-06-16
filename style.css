@@ -1,7 +1,39 @@
 * {
+box-sizing: border-box;
+margin-top: 2vmin;
 
  }
+
 
  body{
+    background-color: white;
+    height: 100vh;
+    margin: 0;
+    display: grid;
+    font-family: 'Nanum Pen Script', cursive;
+    font-size: 4vmin;
+    color: rgb(48, 112, 122)
+ }
+
+ header {
+    font-size: 7vmin;
+    color: rgb(21, 79, 83);
+    text-align: center;
+ }
+ 
+ #board {
+    display: grid;
+    justify-content:flex-start;
+ }
+ 
+ #scoreboard {
+    display: grid;
+    grid-template-columns: 20vmin;
+    grid-template-rows: 10vmin;
+    justify-content: flex-end;
+
 
  }
+ 
+
+ 

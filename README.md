@@ -1,3 +1,3 @@
 # Hangman
 
-hello
+Game: Hangman
