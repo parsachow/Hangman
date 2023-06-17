@@ -1,6 +1,6 @@
 * {
 box-sizing: border-box;
-margin-top: 2vmin;
+margin: 2vmin 2vmin 2vmin 2vmin;
 
  }
 
@@ -9,7 +9,7 @@ margin-top: 2vmin;
     background-color: white;
     height: 100vh;
     margin: 0;
-    display: grid;
+    display: flex;
     font-family: 'Nanum Pen Script', cursive;
     font-size: 4vmin;
     color: rgb(48, 112, 122)
@@ -20,20 +20,52 @@ margin-top: 2vmin;
     color: rgb(21, 79, 83);
     text-align: center;
  }
- 
- #board {
-    display: grid;
-    justify-content:flex-start;
- }
- 
+
  #scoreboard {
-    display: grid;
-    grid-template-columns: 20vmin;
-    grid-template-rows: 10vmin;
-    justify-content: flex-end;
-
+   justify-content: center;
+   align-items: flex-start;
+   font-size: 5vmin;
+   border-style: double;
+   border: 30px, solid black;
+   
 
  }
  
+ #picture {
+    
+    display: flex;
+    justify-content: center;
+    
+ }
 
+ #alphabets {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+   gap: 1vmin;
+   
+
+ }
  
+ 
+#alphabets > button{
+   background-color: teal;
+   font-size: 6vmin;
+   display: flex;
+   justify-content: space-evenly;
+   border-radius: 20%;
+   font-family: 'Nanum Pen Script', cursive;
+   
+}
+
+#play-again {
+   background-color: rgb(246, 188, 74);
+   font-size: 6vmin;
+   font-family: 'Nanum Pen Script', cursive;
+}
+ 
+#new-game {
+   background-color: rgb(246, 188, 74);
+   font-size: 6vmin;
+   font-family: 'Nanum Pen Script', cursive;
+}

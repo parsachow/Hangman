@@ -2,8 +2,6 @@
 
   /*----- constants -----*/
 
-  const ALPHABETS = [ "A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z", ];
-
   const IMGAGES = {img1: "/pics/hangman1.jpeg", img2: "pics/hangman2.jpeg", img3: "pics/hangman3.jpeg", img4: "pics/hangman4.jpeg", img5: "pics/hangman5.jpeg", img6: "pics/hangman6.jpeg"}
 
   const movieList = ["MONSTERS INC", "BOURNE IDENTITY", "THE FUNDAMENTALS OF CARING"];
@@ -14,56 +12,42 @@
   let lossCount;  //number/counting of loss
   let hiddenWord; //selected word
   let guessedletter; //letters picked from the array/alphabets
-  //let incorrectGuess; -> max 6 allowed
+  let incorrectGuess; //max 5 allowed, 6th is counted as loss
   let blankSpace; //length of spaces in 'word'
 
 
   /*----- cached elements  -----*/
 
   const userInput = document.getElementById("blank-spaces");
-  const letterToPick = document.getElementById("alphabets");
+  const lettersToPick = document.getElementById("alphabets");
   const newGameBtn = document.getElementById("new-game")
   const playAgainBtn = document.getElementById("play-again")
   
 
   /*----- event listeners -----*/
 
-  document.querySelector('main').addEventListener('click', handleClicks);
+  //document.querySelector('main').addEventListener('click', handleClicks);
 
 
   /*----- functions -----*/
 
-  init();
+  /*init();
 
   function init() {
     
-    winCount = 0;
-    lossCount = 0;
-
-   
+   winCount = 0;
+   lossCount = 0;
+   //blankSpace = movieList[i(str.length)];
 
 
     render();
   }
-  
-  function createAlphabetBtn() {
-    
-    for (i=0; 1<= ALPHABETS.length; i++)
-        btn = document.createElement("button");
-        btn.innerText = ALPHABETS[i];
-        append(btn);
-        
-    }
-  
-  createAlphabetBtn();
-  
-  function getWinner() {
-    //if movie is guessed correctly or not
-  }
 
+
+  
 
   function render() {
-    renderResults();
+    
   }
 
 
@@ -91,3 +75,23 @@
   /*function refreshPage(){
     window.location.reload();
     console.log("button clicked")*/
+
+ 
+
+    const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+    const alphabet = alpha.map((x) => String.fromCharCode(x));
+    console.log(alphabet)
+
+  function createButton() {
+    
+    for (let i=0; i<alphabet.length; i++) {
+    /*lettersToPick = document.getElementById("alphabets");
+    let btn = document.createElement("button");
+    btn.textContent=lettersToPick[i];
+    lettersToPick.append(btn);*/
+ 
+    document.getElementById("alphabets").innerHTML += "<button>" + alphabet[i] + "</button>"
+
+  }}
+
+  createButton();
