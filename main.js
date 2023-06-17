@@ -6,22 +6,25 @@
 
   const IMGAGES = {img1: "/pics/hangman1.jpeg", img2: "pics/hangman2.jpeg", img3: "pics/hangman3.jpeg", img4: "pics/hangman4.jpeg", img5: "pics/hangman5.jpeg", img6: "pics/hangman6.jpeg"}
 
+  const movieList = ["MONSTERS INC", "BOURNE IDENTITY", "THE FUNDAMENTALS OF CARING"];
 
   /*----- state variables -----*/
-   
-  //let result; 
-  let movieList;
-  let winCount;
-  let lossCount; 
-  let hiddenMoviePicked = "";
+
+  let winCount; //number/counting of wins
+  let lossCount;  //number/counting of loss
+  let hiddenWord; //selected word
+  let guessedletter; //letters picked from the array/alphabets
+  //let incorrectGuess; -> max 6 allowed
+  let blankSpace; //length of spaces in 'word'
 
 
   /*----- cached elements  -----*/
 
   const userInput = document.getElementById("blank-spaces");
   const letterToPick = document.getElementById("alphabets");
-  const newGameBtn = document.querySelector('button');
-
+  const newGameBtn = document.getElementById("new-game")
+  const playAgainBtn = document.getElementById("play-again")
+  
 
   /*----- event listeners -----*/
 
@@ -29,19 +32,31 @@
 
 
   /*----- functions -----*/
+
   init();
 
   function init() {
-
-    movieList = ["MONSTERS INC", "BOURNE IDENTITY", "THE FUNDAMENTALS OF CARING"];
     
     winCount = 0;
     lossCount = 0;
 
+   
+
 
     render();
   }
-
+  
+  function createAlphabetBtn() {
+    
+    for (i=0; 1<= ALPHABETS.length; i++)
+        btn = document.createElement("button");
+        btn.innerText = ALPHABETS[i];
+        append(btn);
+        
+    }
+  
+  createAlphabetBtn();
+  
   function getWinner() {
     //if movie is guessed correctly or not
   }
@@ -53,10 +68,26 @@
 
 
   function handleClicks(evt){
+   
 
+    console.log(evt);
+
+    //location.reload(); ->browser reloads ->new game button?
   }
+
+  //inside or outside the handle clicks event?
+  
+  //newGameBtn.addEventListener('click', function(evt){
+    //evt.target
+  //})
+
 
   function renderResults() {
     //calculate win & loss counts
   }
 
+  
+
+  /*function refreshPage(){
+    window.location.reload();
+    console.log("button clicked")*/
