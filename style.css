@@ -29,6 +29,12 @@ margin: 2vmin 2vmin 2vmin 2vmin;
     justify-content: center;
     
  }
+ #blank-spaces {
+   font-size: 7vmin;
+   display: flex;
+   justify-content: space-evenly;
+
+ }
 
  #alphabets {
    display: flex;
@@ -48,6 +54,7 @@ margin: 2vmin 2vmin 2vmin 2vmin;
    font-family: 'Nanum Pen Script', cursive;
    
 }
+
  
 #new-game{
    background-color: rgb(246, 188, 74);

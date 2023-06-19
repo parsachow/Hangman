@@ -18,7 +18,7 @@
   //let selectedWord; //hidden word picked
   let guessedletter; //letters picked from the array/alphabets
   let incorrectGuess; //max 5 allowed, 6th is counted as loss
-  let blankSpace; //length of spaces in 'word'
+  let wordLength; //length of spaces in 'word'
 
 
   /*----- cached elements  -----*/
@@ -36,15 +36,17 @@
 
   /*----- functions -----*/
 
-  function defImg(){
+function defImg(){
     image.src = PICTURES[6].imgDefault;
-    
   }
-  defImg();
+
+defImg();
 
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
   const alphabet = alpha.map((x) => String.fromCharCode(x));
   console.log(alphabet)
+
+
 
 function createButton() {
   
@@ -54,17 +56,28 @@ function createButton() {
 
 createButton();
 
-  function randomWord(movieList) {
+function randomWord(movieList) {
     return movieList[Math.floor(Math.random()*movieList.length)];
   }
 
 
-  function blankSpaces() {
+function blankSpaces() {
     selectWord = randomWord(movieList);
-    selectWordLength = selectWord.length;
+    wordLength = selectWord.length;
+
+    for(let i=0; i<wordLength; i++){
+      document.getElementById("blank-spaces").innerHTML += "_";
+      let output = document.getElementById("blank-spaces").style.whiteSpace="50px";
+    }
+    
   }
+  //randomWord.split((/[ ]+/));
   blankSpaces();
-  console.log(selectWord, selectWordLength);
+  console.log(selectWord, wordLength);
+
+ 
+  
+
   
   /*init();
 
