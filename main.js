@@ -1,3 +1,5 @@
+//const movieList = ["MONSTERS INC", "BOURNE IDENTITY", "THE FUNDAMENTALS OF CARING", "THE DARK KNIGHT", "PULP FICTION", "THE LORD OF THE RINGS RETURN OF THE KING", "FORREST GUMP", "FIGHT CLUB", "INCEPTION", "THE MATRIX", "JOHN WICK", "SPIRITED AWAY", "PARASITE", "THE USUAL SUSPECTS", "THE ITALIAN JOB", "CATCH ME IF YOU CAN"];
+  
   /*----- constants -----*/
 
   const PICTURES = [
@@ -9,14 +11,14 @@
   {img6: "pics/hangman6.jpeg"},
   {imgDefault: "pics/hangmanRopeMain.jpeg"}]
 
-  const movieList = ["MONSTERS INC", "BOURNE IDENTITY", "THE FUNDAMENTALS OF CARING", "THE DARK KNIGHT", "PULP FICTION", "THE LORD OF THE RINGS RETURN OF THE KING", "FORREST GUMP", "FIGHT CLUB", "INCEPTION", "THE MATRIX", "JOHN WICK", "SPIRITED AWAY", "PARASITE", "THE USUAL SUSPECTS", "THE ITALIAN JOB", "CATCH ME IF YOU CAN"];
+  const movieList = ["ALIEN", "INCEPTION", "ARMAGEDDON", "PARASITE", "PULP FICTION"];
 
   /*----- state variables -----*/
 
   let win; //winning msg
   let loss;  //losing msg
   //let selectedWord; //hidden word picked
-  let guessedletter; //letters picked from the array/alphabets
+  let guessedWord; //letters picked from the array/alphabets
   let incorrectGuess; //max 5 allowed, 6th is counted as loss
   let wordLength; //length of spaces in 'word'
 
@@ -66,16 +68,32 @@ function blankSpaces() {
     wordLength = selectWord.length;
 
     for(let i=0; i<wordLength; i++){
-      document.getElementById("blank-spaces").innerHTML += "_";
-      let output = document.getElementById("blank-spaces").style.whiteSpace="50px";
-    }
-    
-  }
-  //randomWord.split((/[ ]+/));
-  blankSpaces();
-  console.log(selectWord, wordLength);
+      let chosenWord = document.getElementById("blank-spaces").innerHTML += "_"  
+  }}
 
- 
+  //randomWord.split((/[ ]+/));
+blankSpaces();
+console.log(selectWord, wordLength);
+
+
+
+ function hiddenWord(){
+  
+  if(selectWord.includes(alphabet)){
+    //correctly guessed letter(multiple letters if applicable) gets placed in the correct space-string/char
+  } else {
+    
+
+    for (let i=0; i< PICTURES.length; i++){
+      PICTURES[i]
+      //updatedPic = PICTURES.map(img => `<img src="$(img)">`)
+      //image.innerHTML = updatedPic
+
+      //OR, ???
+      //img.innerHTML.append("hangMain");
+    }
+}
+ }
   
 
   
