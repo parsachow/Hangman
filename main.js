@@ -42,11 +42,24 @@ function handleClicks(evt){
   evt.preventDefault()
   console.log(evt.target.innerHTML);
   console.log(selectWord);
- //if evt.target.innerHTML is included in selectword 
+
+  //if selectword includes the letter from evt.target.innerHTML
  //then the letter should show up on the text section in the correct place
+ //select blank-spaces then update the textContent property
  //otherwise it should show the wrong answer's picture
   
-}
+  if(selectWord.includes(evt.target.innerHTML)) {
+    for(let i=0; i< selectWord.length; i++){
+    console.log(selectWord.indexOf(evt.target.innerHTML)=== evt.target.innerHTML)
+    }
+    
+  }else {
+    image.src = PICTURES[0].img1;
+    }
+  }
+ 
+  
+
 
 
 function defImg(){
@@ -89,23 +102,23 @@ console.log(selectWord, wordLength);
 
 
 
- function hiddenWord(){
+// function hiddenWord(){
   
-  if(selectWord.includes(alphabet)){
-    //correctly guessed letter(multiple letters if applicable) gets placed in the correct space-string/char
-  } else {
+//   if(selectWord.includes(evt.target.innerHTML())) {
+//     //correctly guessed letter(multiple letters if applicable) gets placed in the correct space-string/char
+//   } else {
     
 
-    for (let i=0; i< PICTURES.length; i++){
-      PICTURES[i]
-      //updatedPic = PICTURES.map(img => `<img src="$(img)">`)
-      //image.innerHTML = updatedPic
+//     for (let i=0; i< PICTURES.length[5]; i++){
+//       PICTURES[i]
+//       //updatedPic = PICTURES.map(img => `<img src="$(img)">`)
+//       //image.innerHTML = updatedPic
 
-      //OR, ???
-      //img.innerHTML.append("hangMain");
-    }
-}
- }
+//       //OR, ???
+//       //img.innerHTML.append("hangMain");
+//     }
+// }
+//  }
   
 
   
@@ -122,21 +135,6 @@ console.log(selectWord, wordLength);
   function render() {
     
   }
-
-
-  function handleClicks(evt){
-   
-
-    console.log(evt);
-
-    //location.reload(); ->browser reloads ->new game button?
-  }
-
-  //inside or outside the handle clicks event?
-  
-  //newGameBtn.addEventListener('click', function(evt){
-    //evt.target
-  //})
 
 
   function renderResults() {
