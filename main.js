@@ -17,10 +17,11 @@
 
   let win; //winning msg
   let loss;  //losing msg
-  //let selectedWord; //hidden word picked
-  let guessedWord; //letters picked from the array/alphabets
+  let selectWord; //hidden word picked
+  let guessedLetter; //letters picked from the array/alphabets
   let incorrectGuess; //max 5 allowed, 6th is counted as loss
   let wordLength; //length of spaces in 'word'
+  let text;
 
 
   /*----- cached elements  -----*/
@@ -33,15 +34,24 @@
   
   /*----- event listeners -----*/
 
-  //document.querySelector('#board').addEventListener('click', handleClicks);
+  lettersToPick.addEventListener('click', handleClicks);
 
 
   /*----- functions -----*/
+function handleClicks(evt){
+  evt.preventDefault()
+  console.log(evt.target.innerHTML);
+  console.log(selectWord);
+ //if evt.target.innerHTML is included in selectword 
+ //then the letter should show up on the text section in the correct place
+ //otherwise it should show the wrong answer's picture
+  
+}
+
 
 function defImg(){
     image.src = PICTURES[6].imgDefault;
   }
-
 defImg();
 
   const alpha = Array.from(Array(26)).map((e, i) => i + 65);
@@ -68,7 +78,9 @@ function blankSpaces() {
     wordLength = selectWord.length;
 
     for(let i=0; i<wordLength; i++){
-      let chosenWord = document.getElementById("blank-spaces").innerHTML += "_"  
+
+      text = document.getElementById("blank-spaces").innerHTML += "_";
+
   }}
 
   //randomWord.split((/[ ]+/));
