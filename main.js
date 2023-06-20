@@ -18,10 +18,10 @@
   let win; //winning msg
   let loss;  //losing msg
   let selectWord; //hidden word picked
-  let guessedLetter; //letters picked from the array/alphabets
+  let guessedLetterIdx; //letters picked from the array/alphabets
   let incorrectGuess; //max 5 allowed, 6th is counted as loss
   let wordLength; //length of spaces in 'word'
-  let text;
+  let hiddenWord = [];
 
 
   /*----- cached elements  -----*/
@@ -38,25 +38,49 @@
 
 
   /*----- functions -----*/
+
+
+
+
 function handleClicks(evt){
   evt.preventDefault()
-  console.log(evt.target.innerHTML);
+  if (evt.target.tagName !== "BUTTON") return
+  console.log(evt.target.innerText);
   console.log(selectWord);
 
-  //if selectword includes the letter from evt.target.innerHTML
- //then the letter should show up on the text section in the correct place
+  //if selectword includes the letter from evt.target.innerText
+ //then the letter(s) should show up on the text section in the correct place
  //select blank-spaces then update the textContent property
  //otherwise it should show the wrong answer's picture
-  
-  if(selectWord.includes(evt.target.innerHTML)) {
-    for(let i=0; i< selectWord.length; i++){
-    console.log(selectWord.indexOf(evt.target.innerHTML)=== evt.target.innerHTML)
-    }
+ selectWord.split("").forEach((letter, idx) => {
+  console.log(letter)
+if(evt.target.innerText === letter){
+  hiddenWord[idx] = evt.target.innerText
+}
+});
+if (!selectWord.includes(evt.target.innerText)){
+  image.src = PICTURES[0].img1;
+ }
+render();
+}
+
+
+  // if(selectWord.includes(evt.target.innerText)) {
     
-  }else {
-    image.src = PICTURES[0].img1;
-    }
-  }
+  //   guessedLetterIdx = selectWord.indexOf(evt.target.innerText)
+
+  //   pickedLetterIdx = [];
+
+  //   for(let i=0; i <selectWord.length; i++){
+  //     if(selectWord[i] === evt.target.innerText) 
+  //     pickedLetterIdx.push(i);
+  //     console.log(pickedLetterIdx);
+      
+  //   }
+  // }else {
+  //   image.src = PICTURES[0].img1;
+  //   }}
+  
  
   
 
@@ -86,27 +110,36 @@ function randomWord(movieList) {
   }
 
 
-function blankSpaces() {
+
+
+
+function render() {
+  document.getElementById("blank-spaces").innerHTML = "";
+    for(let i=0; i<wordLength; i++){
+
+      document.getElementById("blank-spaces").innerHTML += hiddenWord[i];
+  }
+  }
+  
+
+  function init() {
     selectWord = randomWord(movieList);
     wordLength = selectWord.length;
 
     for(let i=0; i<wordLength; i++){
+      hiddenWord[i] = "_"
+    }
+    render();
+  }
 
-      text = document.getElementById("blank-spaces").innerHTML += "_";
+  init();
 
-  }}
 
-  //randomWord.split((/[ ]+/));
-blankSpaces();
 console.log(selectWord, wordLength);
 
 
 
-// function hiddenWord(){
-  
-//   if(selectWord.includes(evt.target.innerHTML())) {
-//     //correctly guessed letter(multiple letters if applicable) gets placed in the correct space-string/char
-//   } else {
+
     
 
 //     for (let i=0; i< PICTURES.length[5]; i++){
@@ -122,19 +155,12 @@ console.log(selectWord, wordLength);
   
 
   
-  /*init();
-
-  function init() {
-    
-    render();
-  }
+  /*
 
 
   
 
-  function render() {
-    
-  }
+  
 
 
   function renderResults() {
@@ -147,8 +173,3 @@ console.log(selectWord, wordLength);
     window.location.reload();
     console.log("button clicked")*/
 
- 
-
- 
-
-  
