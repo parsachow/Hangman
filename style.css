@@ -22,13 +22,20 @@ margin: 2vmin 2vmin 2vmin 2vmin;
  }
 
  
- 
  #pic {
     
     display: flex;
     justify-content: center;
     
  }
+
+ #message {
+   display: flex;
+   justify-content: center;
+   font-size: 10vmin;
+   color: red;
+ }
+
  #blank-spaces {
    font-size: 7vmin;
    display: flex;

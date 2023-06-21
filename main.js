@@ -100,10 +100,10 @@ function checkWinner(){
     console.log(userGuess);
   console.log(joinedWord);
   if(userGuess >= guessAllowed){
-      message.innerText = "you lost";
+      message.innerText = "You Lost :(";
   }
   if(selectWord === joinedWord){
-    message.innerText = "you won";
+    message.innerText = "You Won!!!";
   }
 }
 
