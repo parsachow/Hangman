@@ -2,13 +2,14 @@
   /*----- constants -----*/
 
   const PICTURES = [
-  {img1: "/pics/hangman1.jpeg"}, 
-  {img2: "pics/hangman2.jpeg"}, 
-  {img3: "pics/hangman3.jpeg"}, 
-  {img4: "pics/hangman4.jpeg"}, 
-  {img5: "pics/hangman5.jpeg"}, 
-  {img6: "pics/hangman6.jpeg"},
-  {imgDefault: "pics/hangmanRopeMain.jpeg"}]
+  "pics/hangmanRopeMain.jpeg",
+  "/pics/hangman1.jpeg", 
+  "pics/hangman2.jpeg", 
+  "pics/hangman3.jpeg", 
+  "pics/hangman4.jpeg", 
+  "pics/hangman5.jpeg", 
+  "pics/hangman6.jpeg",
+  ]
 
   const movieList = ["ALIEN", "INCEPTION", "ARMAGEDDON", "PARASITE", "JAWS", "GLADIATOR", "TANGLED", "ENCHANTED", "ARGO"];
 
@@ -38,7 +39,7 @@
   /*----- functions -----*/
 
 function defImg(){
-  image.src = PICTURES[6].imgDefault;
+  image.src = PICTURES[0];
 }
 
 
@@ -76,14 +77,11 @@ function handleClicks(evt){
 });
   
   if (!selectWord.includes(evt.target.innerText)){
-  image.src = PICTURES[0].img1;
-  userGuess ++;
+  ++userGuess;
+ 
   console.log(userGuess);
  }
-//  else if(!selectWord.includes(evt.target.innerText)){
-//   mage.src = PICTURES[1].img2;
-//   userGuess --;
-//  }
+
  
   render();
   
@@ -113,7 +111,9 @@ function render() {
     for(let i=0; i<wordLength; i++){
 
     document.getElementById("blank-spaces").innerHTML += hiddenWord[i];
+
   }
+  image.src = PICTURES[userGuess];
   
 }
 
