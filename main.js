@@ -14,12 +14,12 @@
 
   /*----- state variables -----*/
 
-  let win; //winning msg
-  let loss;  //losing msg
+  let lives
   let selectWord; //hidden word picked
-  let incorrectGuess; //max 5 allowed, 6th is counted as loss
+  let guessAllowed; //max 5 allowed, 6th is counted as loss
   let wordLength; //length of spaces in 'word'
   let hiddenWord = [];
+  let userGuess;
 
 
   /*----- cached elements  -----*/
@@ -27,8 +27,7 @@
   const image = document.getElementById("hangMain");
   const userInput = document.getElementById("blank-spaces");
   const lettersToPick = document.getElementById("alphabets");
-  const newGameBtn = document.getElementById("new-game")
-  const message = document.getElementById("board");
+  const message = document.getElementById("message");
   
   
   /*----- event listeners -----*/
@@ -38,11 +37,25 @@
 
   /*----- functions -----*/
 
-function checkWinner(){
-  //if all blank spaces are filled- winning msg
-  //if not - image changes - losing msg after 5th try. picture change
+function defImg(){
+  image.src = PICTURES[6].imgDefault;
 }
 
+
+const alpha = Array.from(Array(26)).map((e, i) => i + 65);
+const alphabet = alpha.map((x) => String.fromCharCode(x));
+
+
+function createButton() {
+  for (let i=0; i<alphabet.length; i++){
+  document.getElementById("alphabets").innerHTML += "<button>" + alphabet[i] + "</button>"
+}}
+createButton();
+
+
+function randomWord(movieList) {
+  return movieList[Math.floor(Math.random()*movieList.length)];
+}
 
 
  //if selectword includes the letter from evt.target.innerText
@@ -54,53 +67,53 @@ function handleClicks(evt){
   evt.preventDefault()
   if (evt.target.tagName !== "BUTTON") return
  
-
- selectWord.split("").forEach((letter, idx) => {
+  selectWord.split("").forEach((letter, idx) => {
   //console.log(letter)
-if(evt.target.innerText === letter){
+  if(evt.target.innerText === letter){
   hiddenWord[idx] = evt.target.innerText
 }
 });
-if (!selectWord.includes(evt.target.innerText)){
+  if (!selectWord.includes(evt.target.innerText)){
   image.src = PICTURES[0].img1;
+  userGuess --;
  }
-render();
+ 
+  render();
+  
+  checkWinner();
+  
 }
-  
 
-function defImg(){
-    image.src = PICTURES[6].imgDefault;
+
+function checkWinner(){
+  let joinedWord = hiddenWord.join("");
+  //if all blank spaces are filled -> then winning msg
+  //if more than 5 guesses -> image changes till img 6 -> losing msg after 5th try.
+  if(guessAllowed < userGuess){
+    if(selectWord === joinedWord){
+      message.innerText = "you won";
+    
+    }else{
+      message.innerText = "you lost";}
   }
-
-
-  const alpha = Array.from(Array(26)).map((e, i) => i + 65);
-  const alphabet = alpha.map((x) => String.fromCharCode(x));
-
-
-function createButton() {
-  
-  for (let i=0; i<alphabet.length; i++){
-  document.getElementById("alphabets").innerHTML += "<button>" + alphabet[i] + "</button>"
-}}
-
-createButton();
-
-function randomWord(movieList) {
-    return movieList[Math.floor(Math.random()*movieList.length)];
-  }
+}
 
 
 function render() {
   document.getElementById("blank-spaces").innerHTML = "";
     for(let i=0; i<wordLength; i++){
 
-      document.getElementById("blank-spaces").innerHTML += hiddenWord[i];
-  }
+    document.getElementById("blank-spaces").innerHTML += hiddenWord[i];
   }
   
+}
 
-  function init() {
+
+function init() {
     defImg();
+
+    guessAllowed = 5;
+
     selectWord = randomWord(movieList);
     wordLength = selectWord.length;
 
