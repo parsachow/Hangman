@@ -121,7 +121,7 @@ function render() {
 function init() {
     defImg();
 
-    guessAllowed = 5;
+    guessAllowed = 6;
     userGuess = 0;
 
     selectWord = randomWord(movieList);
