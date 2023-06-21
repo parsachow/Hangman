@@ -65,6 +65,7 @@ function randomWord(movieList) {
 
 function handleClicks(evt){
   evt.preventDefault()
+  
   if (evt.target.tagName !== "BUTTON") return
  
   selectWord.split("").forEach((letter, idx) => {
@@ -73,10 +74,16 @@ function handleClicks(evt){
   hiddenWord[idx] = evt.target.innerText
 }
 });
+  
   if (!selectWord.includes(evt.target.innerText)){
   image.src = PICTURES[0].img1;
-  userGuess --;
+  userGuess ++;
+  console.log(userGuess);
  }
+//  else if(!selectWord.includes(evt.target.innerText)){
+//   mage.src = PICTURES[1].img2;
+//   userGuess --;
+//  }
  
   render();
   
@@ -89,12 +96,14 @@ function checkWinner(){
   let joinedWord = hiddenWord.join("");
   //if all blank spaces are filled -> then winning msg
   //if more than 5 guesses -> image changes till img 6 -> losing msg after 5th try.
-  if(guessAllowed < userGuess){
-    if(selectWord === joinedWord){
-      message.innerText = "you won";
-    
-    }else{
-      message.innerText = "you lost";}
+  console.log(guessAllowed);
+    console.log(userGuess);
+  console.log(joinedWord);
+  if(userGuess >= guessAllowed){
+      message.innerText = "you lost";
+  }
+  if(selectWord === joinedWord){
+    message.innerText = "you won";
   }
 }
 
@@ -113,6 +122,7 @@ function init() {
     defImg();
 
     guessAllowed = 5;
+    userGuess = 0;
 
     selectWord = randomWord(movieList);
     wordLength = selectWord.length;
