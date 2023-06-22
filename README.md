@@ -9,7 +9,14 @@ if the letters are guessed correctly, a winning message is displayed. If not, a 
 The new game button can be clicked to begin a new game. 
 
 
-Screenshot: ![hangman-browser-layout](https://github.com/parsachow/Hangman/assets/135050392/4b1fec87-f5a6-45ac-94d1-e71d1583ddbf)
+Screenshot: 
+Wireframe:
+https://imgur.com/H3AOkwu
+
+![hangman-browser-layout](https://github.com/parsachow/Hangman/assets/135050392/4b1fec87-f5a6-45ac-94d1-e71d1583ddbf)
+
+layout: 
+https://imgur.com/a/lPwnrJN
 
 
 Getting Started: 
