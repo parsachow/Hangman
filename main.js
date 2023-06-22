@@ -3,7 +3,7 @@
 
   const PICTURES = [
   "pics/hangmanRopeMain.jpeg",
-  "/pics/hangman1.jpeg", 
+  "pics/hangman1.jpeg", 
   "pics/hangman2.jpeg", 
   "pics/hangman3.jpeg", 
   "pics/hangman4.jpeg", 
