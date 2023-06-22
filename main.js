@@ -97,7 +97,7 @@ function checkWinner(){
   //if 6 guesses -> image changes till img 6 -> losing msg
   
   if(userGuess >= guessAllowed){
-      message.innerText = "You Lost :(";
+      message.innerText = "You Lost :( the word was - " + selectWord;
       loss = +1;
       lossCount.innerText = "Loss: " + loss;
   }

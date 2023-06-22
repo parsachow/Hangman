@@ -32,7 +32,7 @@ margin: 2vmin 2vmin 2vmin 2vmin;
  #message {
    display: flex;
    justify-content: center;
-   font-size: 10vmin;
+   font-size: 5vmin;
    color: red;
  }
 
