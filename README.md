@@ -21,5 +21,7 @@ HTML, CSS, JavaScript, VS Code, GitHub.
 
 
 Next Steps: 
-1. Insert a scoreboard
-2. keep Win/Loss count
+1. Add Play Again Button 
+2. Save Win/Loss Score on Scoreboard
+3. Add multiple word movie names
+4. Add different Categories

@@ -51,6 +51,23 @@ margin: 2vmin 2vmin 2vmin 2vmin;
    
  }
  
+ #scoreboard {
+   display: flex-end;
+   align-items: right;
+   text-align: center;
+   font-size: 5vmin;
+   border: black solid;
+ }
+ 
+ #winCnt {
+   text-align: left;
+   color: red;
+ }
+ 
+ #lossCnt {
+   text-align: left;
+   color: red;
+ }
  
 #alphabets > button{
    background-color: teal;

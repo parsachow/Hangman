@@ -21,6 +21,8 @@
   let wordLength; //length of 'selectword'
   let hiddenWord = [];
   let userGuess; //wrong guess being counted
+  let win;
+  let loss;
 
 
   /*----- cached elements  -----*/
@@ -29,7 +31,8 @@
   const userInput = document.getElementById("blank-spaces");
   const lettersToPick = document.getElementById("alphabets");
   const message = document.getElementById("message");
-  
+  const winCount = document.getElementById("winCnt");
+  const lossCount = document.getElementById("lossCnt");
   
   /*----- event listeners -----*/
 
@@ -95,9 +98,13 @@ function checkWinner(){
   
   if(userGuess >= guessAllowed){
       message.innerText = "You Lost :(";
+      loss = +1;
+      lossCount.innerText = "Loss: " + loss;
   }
   if(selectWord === joinedWord){
     message.innerText = "You Won!!!";
+    win = +1;
+    winCount.innerText = "Win: " + win;
   }
 }
 
@@ -119,6 +126,8 @@ function init() {
 
   guessAllowed = 6;
   userGuess = 0;
+  win = 0;
+  loss = 0;
 
   selectWord = randomWord(movieList);
   wordLength = selectWord.length;
