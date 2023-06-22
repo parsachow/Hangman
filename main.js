@@ -11,16 +11,16 @@
   "pics/hangman6.jpeg",
   ]
 
-  const movieList = ["ALIEN", "INCEPTION", "ARMAGEDDON", "PARASITE", "JAWS", "GLADIATOR", "TANGLED", "ENCHANTED", "ARGO"];
+  const movieList = ["ALIEN", "INCEPTION", "ARMAGEDDON", "PARASITE", "JAWS", "GLADIATOR", "TANGLED", "ENCHANTED", "ARGO", "AVATAR", "PSYCHO", "CASABLANCA"];
+
 
   /*----- state variables -----*/
 
-  let lives
-  let selectWord; //hidden word picked
-  let guessAllowed; //max 5 allowed, 6th is counted as loss
-  let wordLength; //length of spaces in 'word'
+  let selectWord; //hidden word picked from movielist
+  let guessAllowed; //max 6 allowed
+  let wordLength; //length of 'selectword'
   let hiddenWord = [];
-  let userGuess;
+  let userGuess; //wrong guess being counted
 
 
   /*----- cached elements  -----*/
@@ -51,18 +51,17 @@ function createButton() {
   for (let i=0; i<alphabet.length; i++){
   document.getElementById("alphabets").innerHTML += "<button>" + alphabet[i] + "</button>"
 }}
-createButton();
+
+  createButton();
 
 
 function randomWord(movieList) {
   return movieList[Math.floor(Math.random()*movieList.length)];
 }
-
-
- //if selectword includes the letter from evt.target.innerText
- //then the letter(s) should show up on the text section in the correct place
- //select blank-spaces then update the textContent property
- //otherwise it should show the wrong answer's picture
+ //if selectword includes the letter clicked from evt.target.innerText
+ //then the letter(s) should show up on the blank space section in the correct index/location
+ //selected letters should be placed in the correct location(s)
+ //if guess is incorrect, hangman picture gets updated and number of guessAllowed gets decresed
 
 function handleClicks(evt){
   evt.preventDefault()
@@ -70,18 +69,16 @@ function handleClicks(evt){
   if (evt.target.tagName !== "BUTTON") return
  
   selectWord.split("").forEach((letter, idx) => {
-  //console.log(letter)
-  if(evt.target.innerText === letter){
-  hiddenWord[idx] = evt.target.innerText
-}
+
+    if(evt.target.innerText === letter){
+    hiddenWord[idx] = evt.target.innerText
+  }
 });
   
   if (!selectWord.includes(evt.target.innerText)){
   ++userGuess;
  
-  console.log(userGuess);
  }
-
  
   render();
   
@@ -92,11 +89,10 @@ function handleClicks(evt){
 
 function checkWinner(){
   let joinedWord = hiddenWord.join("");
+
   //if all blank spaces are filled -> then winning msg
-  //if more than 5 guesses -> image changes till img 6 -> losing msg after 5th try.
-  console.log(guessAllowed);
-    console.log(userGuess);
-  console.log(joinedWord);
+  //if 6 guesses -> image changes till img 6 -> losing msg
+  
   if(userGuess >= guessAllowed){
       message.innerText = "You Lost :(";
   }
@@ -107,35 +103,30 @@ function checkWinner(){
 
 
 function render() {
-  document.getElementById("blank-spaces").innerHTML = "";
+  userInput.innerHTML = "";
     for(let i=0; i<wordLength; i++){
 
-    document.getElementById("blank-spaces").innerHTML += hiddenWord[i];
-
+    userInput.innerHTML += hiddenWord[i];
   }
+  //picture updated with each wrong guess
   image.src = PICTURES[userGuess];
   
 }
 
 
 function init() {
-    defImg();
+  defImg();
 
-    guessAllowed = 6;
-    userGuess = 0;
+  guessAllowed = 6;
+  userGuess = 0;
 
-    selectWord = randomWord(movieList);
-    wordLength = selectWord.length;
+  selectWord = randomWord(movieList);
+  wordLength = selectWord.length;
 
-    for(let i=0; i<wordLength; i++){
-      hiddenWord[i] = "_"
-    }
-    render();
+  for(let i=0; i<wordLength; i++){
+    hiddenWord[i] = "_"
   }
+  render();
+}
 
   init();
-
-
-console.log(selectWord, wordLength);
-
-
