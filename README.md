@@ -20,7 +20,7 @@ https://imgur.com/a/lPwnrJN
 
 
 Getting Started: 
-Link: https://github.com/parsachow/Hangman
+Link: https://parsachow.github.io/Hangman/
 
 
 Technologies Used: 
