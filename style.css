@@ -46,6 +46,7 @@ margin: 2vmin 2vmin 2vmin 2vmin;
  #alphabets {
    display: flex;
    flex-direction: row;
+   justify-content: center;
    flex-wrap: wrap;
    gap: 1vmin;
    
